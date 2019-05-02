@@ -8,10 +8,16 @@
     <title>Document</title>
 </head>
 <body>
-<form action="http://172.17.14.250:8080/process_post" method="post">
-name: <input type="text" name="name">  <br>
-content: <textarea name="content" id="" cols="30" rows="10"></textarea>
+<form action="http://172.17.14.250:8080/process_post" method="post" onsubmit="return check()">
+name: <input type="text" name="name" id="name">  <br>
+content: <textarea name="content" id="content" cols="30" rows="10"></textarea>
 <input type="submit" value="Submit">
 </form>
+<script>
+    var tags=document.querySelectorAll('input')
+    function check(){
+        
+    }
+</script>
 </body>
 </html>
