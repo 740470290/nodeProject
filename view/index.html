@@ -8,16 +8,52 @@
     <link rel="icon" href="../public/favicon.ico" type="image/x-icon" />
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-<div class="container header">
-    <div class="page-header">
+<div id="app"></div>
+<script type="text/babel">
+    class App extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {date: 1}
+    }
+    componentDidMount() {
+        axios.get("/data")
+        .then((res)=> {
+         const data=res.data.message
+         const list = data.map((item) =>
+              <li key={item.date} className="list-group-item">{item.name}:{item.content}<span className="pull-right">{item.date}</span></li>
+            );
+         this.setState({
+            date: list
+        })
+        })
+        .catch((err)=> {
+          console.log(err);
+        });
+    }
+    render() {
+        return (
+            <div className="container header">
+    <div className="page-header">
         <h1>留言板列表</h1>
-    <a href="/add"><button type="button" class="btn btn-success">发表留言</button></a>
+    <a href="/add"><button type="button" className="btn btn-success">发表留言</button></a>
     </div>
-    <div class="comments container">
-        <ul class=list-group>data</ul>
+    <div className="comments container">
+        <ul className="list-group">{this.state.date}</ul>
         </div>
 </div>
+            )
+    }
+}
+ReactDOM.render(
+    <App/>,
+    app
+)
+</script>
 </body>
 </html>

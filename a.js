@@ -8,19 +8,13 @@ var urlencodedParser = bodyParser.urlencoded({extended: false})
 
 app.use('/public', express.static('public'));
 
-app.get('/index', function (req, res) {
+app.get('/data', function (req, res) {
     fs.readFile(__dirname + "/" + "users.json", 'utf8', function (err, data) {
-        data = JSON.parse(data);
-        var str = ''
-        data['message'].forEach(function (item) {
-            str += `<li class="list-group-item">${item.name}:${item.content}<span class="pull-right">${item.date}</span></li>`
-        })
-        // res.end(JSON.stringify(data));
-        fs.readFile('./view/index.html', 'utf8', function (err, data) {
-            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
-            res.end(data.replace('data', str))
-        });
+        res.end(data);
     })
+})
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + "/view/" + "index.html");
 })
 app.get('/add', function (req, res) {
     res.sendFile(__dirname + "/view/" + "add.html");

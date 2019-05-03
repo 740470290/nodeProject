@@ -7,12 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Qingqing</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+	<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+	<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
 </head>
 <body>
 <div class="container header">
 <div class="page-header">
 		<h1>添加留言</h1>
-		<a href="/index"><button class="btn btn-success">返回首页</button></a>
+		<a href="/"><button class="btn btn-success">返回首页</button></a>
 		</div>
 		<div class="comments container">
 <form action="/process_post" method="post" onsubmit="return check()">
