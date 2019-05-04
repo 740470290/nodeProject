@@ -37,7 +37,7 @@ app.post('/process_post', urlencodedParser, function (req, res) {
     })
     console.log(response);
 
-res.redirect('/index');
+res.redirect('/');
 })
 
 var server = app.listen(8080, function () {
