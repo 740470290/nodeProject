@@ -5,7 +5,6 @@ var fs = require("fs");
 
 // 创建 application/x-www-form-urlencoded 编码解析
 var urlencodedParser = bodyParser.urlencoded({extended: false})
-
 app.use('/public', express.static('public'));
 
 app.get('/data', function (req, res) {
